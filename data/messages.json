@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1785265336109,
+    "name": "Alone Jutt",
+    "email": "alonejutt540539@gmail.com",
+    "phone": "+92 326 1822075",
+    "subject": "reservation",
+    "message": "Sunt fugiat evenie",
+    "timestamp": "2026-07-28T19:02:16.109Z",
+    "read": true
+  },
+  {
+    "id": 1785264503984,
+    "name": "Shafira Espinoza",
+    "email": "zunihedoji@mailinator.com",
+    "phone": "+1 (137) 861-4377",
+    "subject": "reservation",
+    "message": "Quam ipsa voluptas",
+    "timestamp": "2026-07-28T18:48:23.984Z",
+    "read": true
+  },
+  {
+    "id": 1785266965867,
+    "name": "Alone Jutt",
+    "email": "alonejutt540539@gmail.com",
+    "phone": "",
+    "subject": "reservation",
+    "message": "I want to reserve a table.",
+    "timestamp": "2026-07-28T19:29:25.867Z",
+    "read": true
+  },
+  {
+    "id": 1785331227146,
+    "name": "Ivana Deleon",
+    "email": "picosokon@mailinator.com",
+    "phone": "+1 (351) 702-4978",
+    "subject": "reservation",
+    "message": "Aliquam sint sit re",
+    "timestamp": "2026-07-29T13:20:27.146Z",
+    "read": true
+  }
+]

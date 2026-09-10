@@ -1,0 +1,7 @@
+{
+  "username": "admin",
+  "password": {
+    "salt": "19502d8ea06ebd5586cb612868cef070",
+    "hash": "426f386cbf9a3e2dd8935264cd0e792e9ce65d88822311a87cfc5d4fbfd7e36c71c1540b731d581bd42cd40d351d355b19b8f6787812198f3ff36c58378d2fd5"
+  }
+}

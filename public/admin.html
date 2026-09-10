@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Mutam al Bukhari</title>
+    <link rel="icon" href="images/Tab Icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/toast.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #c9a227;
+            --primary-dark: #a68520;
+            --dark: #1e1e2f;
+            --sidebar-bg: #27293d;
+            --light: #f4f6f9;
+            --white: #ffffff;
+            --danger: #fd5d93;
+            --success: #00d6b4;
+            --info: #1d8cf8;
+            --whatsapp: #25D366;
+            --text-main: #333;
+            --text-muted: #888;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- Layout --- */
+        .admin-layout {
+            display: flex;
+            width: 100%;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            width: 260px;
+            background: linear-gradient(0deg, #1e1e2f 0%, #27293d 100%);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: left 0.3s ease-in-out;
+        }
+
+        .sidebar-brand {
+            padding: 25px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 10px;
+        }
+
+        .sidebar-brand i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .sidebar-brand h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0 15px;
+            flex-grow: 1;
+        }
+
+        .nav-links li {
+            margin-bottom: 8px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #fff;
+            background: var(--primary);
+            box-shadow: 0 4px 10px rgba(201, 162, 39, 0.4);
+            transform: translateX(5px);
+        }
+
+        /* User Profile Menu in Sidebar */
+        .user-profile {
+            padding: 20px 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: auto;
+        }
+
+        .profile-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .profile-info h4 {
+            font-size: 0.95rem;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .profile-info p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            margin: 0;
+        }
+
+        .profile-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .btn-profile {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .btn-profile:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .btn-profile.logout {
+            color: var(--danger);
+            background: rgba(253, 93, 147, 0.1);
+        }
+        
+        .btn-profile.logout:hover {
+            background: rgba(253, 93, 147, 0.2);
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            margin-left: 260px;
+            flex-grow: 1;
+            padding: 30px 40px;
+            transition: margin-left 0.3s ease-in-out;
+            min-width: 0;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .top-header h1 {
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            flex: 1;
+            padding: 25px 20px;
+            background: var(--white);
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            animation: slideUp 0.5s ease backwards;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; border-left-color: var(--info); }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; border-left-color: var(--danger); }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; border-left-color: var(--success); }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .stat-card:nth-child(1) .stat-icon { background: rgba(29, 140, 248, 0.1); color: var(--info); }
+        .stat-card:nth-child(2) .stat-icon { background: rgba(253, 93, 147, 0.1); color: var(--danger); }
+        .stat-card:nth-child(3) .stat-icon { background: rgba(0, 214, 180, 0.1); color: var(--success); }
+
+        .stat-details h3 {
+            font-size: 2rem;
+            margin-bottom: 2px;
+            color: var(--dark);
+        }
+
+        .stat-details p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- Advanced Data Table --- */
+        .table-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            animation: slideUp 0.6s ease backwards;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .table-header h2 {
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        /* Search Bar */
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box input {
+            padding: 10px 15px 10px 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            outline: none;
+            width: 250px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            color: #aaa;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        th {
+            font-weight: 500;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tbody tr {
+            transition: all 0.2s;
+        }
+
+        tbody tr:hover {
+            background: #fcfcfc;
+        }
+
+        tbody tr.unread {
+            background: rgba(253, 93, 147, 0.03);
+            font-weight: 500;
+        }
+
+        tbody tr.unread:hover {
+            background: rgba(253, 93, 147, 0.06);
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-danger { background: rgba(253, 93, 147, 0.1); color: var(--danger); }
+        .badge-success { background: rgba(0, 214, 180, 0.1); color: var(--success); }
+
+        /* Table Action Buttons */
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 5px;
+            margin-right: 5px;
+            transition: transform 0.2s;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.15);
+        }
+        .text-info { color: var(--info); }
+        .text-primary { color: var(--primary); }
+        .text-danger { color: var(--danger); }
+        .text-whatsapp { color: var(--whatsapp); }
+
+        /* Reply Row */
+        .reply-row {
+            background: #fafafa !important;
+            display: none;
+        }
+        .reply-row.active {
+            display: table-row;
+        }
+        .reply-content {
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: #fff;
+            margin: 10px 0;
+        }
+
+        .reply-textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            margin: 15px 0;
+            resize: vertical;
+            min-height: 100px;
+        }
+        .reply-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* General Buttons */
+        .btn {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-danger { background: var(--danger); color: #fff; }
+        .btn-danger:hover { background: #e04b7c; }
+
+        /* Animations */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active { display: flex; }
+
+        .modal-content {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slideUp 0.3s ease;
+        }
+        
+        .modal-content h3 { margin-bottom: 15px; color: var(--dark); }
+        .modal-content p { color: var(--text-muted); margin-bottom: 25px; }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        /* Credentials form */
+        .credentials-form { display: flex; flex-direction: column; gap: 12px; }
+        .credentials-form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        .credentials-form input:focus { outline: none; border-color: var(--primary); }
+        
+        .password-field { position: relative; display: flex; align-items: center; }
+        .password-field input { padding-right: 45px; }
+        .password-toggle {
+            position: absolute; right: 12px; background: none; border: none;
+            color: #888; cursor: pointer; font-size: 1.1rem; padding: 5px;
+        }
+
+        /* --- Mobile Menu Button --- */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-btn .bar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark);
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .mobile-menu-btn.active {
+            transform: none;
+            position: fixed;
+            left: 210px;
+            top: 25px;
+        }
+
+        .mobile-menu-btn.active .bar {
+            background-color: var(--white);
+        }
+
+        .mobile-menu-btn.active .bar:nth-child(1) {
+            transform: translateY(10.5px) rotate(45deg);
+        }
+        .mobile-menu-btn.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-menu-btn.active .bar:nth-child(3) {
+            transform: translateY(-10.5px) rotate(-45deg);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .sidebar {
+                left: -100%;
+            }
+            .sidebar.active {
+                left: 0;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+                width: 100vw;
+            }
+            .mobile-menu-btn {
+                display: flex;
+            }
+            .top-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .stats-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .table-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 20px;
+            }
+            .table-actions {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                gap: 10px;
+            }
+            .search-box, .search-box input {
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .table-container {
+                padding: 15px;
+            }
+        }
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* User Provided Loader */
+        .loader {
+            position: relative;
+            z-index: 10001;
+            width: 70px;
+            aspect-ratio: 1;
+            display: grid;
+            animation: l14 4s infinite;
+            margin-bottom: 25px;
+        }
+        .loader::before,
+        .loader::after {    
+            content: "";
+            grid-area: 1/1;
+            border: 8px solid;
+            border-radius: 50%;
+            border-color: var(--primary) var(--primary) #0000 #0000;
+            animation: l14 1s infinite linear;
+        }
+        .loader::after {
+            border-color: #0000 #0000 #fff #fff;
+            animation-direction: reverse;
+        }
+        @keyframes l14{ 
+            100%{transform: rotate(1turn)}
+        }
+
+        .loading-text {
+            position: relative;
+            z-index: 10001;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            animation: pulseText 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- Full Screen Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+        <div class="loading-text">Synchronizing</div>
+    </div>
+
+    <div class="admin-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-utensils"></i>
+                <h2>Mutam Admin</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/admin" class="active"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                <li><a href="#" id="refreshBtn"><i class="fas fa-sync-alt"></i> Refresh Data</a></li>
+                <li><a href="/" target="_blank"><i class="fas fa-external-link-alt"></i> View Website</a></li>
+            </ul>
+
+            <!-- Professional User Profile Menu -->
+            <div class="user-profile">
+                <div class="profile-card">
+                    <div class="profile-avatar">A</div>
+                    <div class="profile-info">
+                        <h4>Admin</h4>
+                        <p>Administrator</p>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn-profile" id="changeCredentialsBtn">
+                        <i class="fas fa-key"></i> Edit Settings
+                    </button>
+                    <button class="btn-profile logout" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="top-header">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <button class="mobile-menu-btn" id="adminMenuBtn">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                    <h1>Overview</h1>
+                </div>
+                <div class="date-display" id="currentDate" style="color: var(--text-muted); font-weight: 500;"></div>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-inbox"></i></div>
+                    <div class="stat-details">
+                        <h3 id="totalMessages">0</h3>
+                        <p>Total Messages</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="stat-details">
+                        <h3 id="unreadMessages">0</h3>
+                        <p>Unread Messages</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-calendar-day"></i></div>
+                    <div class="stat-details">
+                        <h3 id="todayMessages">0</h3>
+                        <p>Today's Messages</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Data Table -->
+            <div class="table-container">
+                <div class="table-header">
+                    <h2>Recent Messages</h2>
+                    <div class="table-actions">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search by name, email, or subject...">
+                        </div>
+                        <button class="btn btn-primary" id="markAllReadBtn"><i class="fas fa-check-double"></i> Mark All Read</button>
+                        <button class="btn btn-danger" id="clearAllBtn"><i class="fas fa-trash"></i> Clear All</button>
+                    </div>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table id="messagesTable">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Subject</th>
+                                <th style="text-align: center;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr>
+                                <td colspan="5" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                                    <p>Loading messages...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals (unchanged HTML structure, just styled differently) -->
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-exclamation-triangle text-danger"></i> Confirm Delete</h3>
+            <p>Are you sure you want to delete this message? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button class="btn" id="cancelDelete" style="background: #eee; color: #333;">Cancel</button>
+                <button class="btn btn-danger" id="confirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Credentials Modal -->
+    <div class="modal" id="credentialsModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-key text-primary"></i> Change Admin Login</h3>
+            <form id="credentialsForm" class="credentials-form">
+                <div class="password-field">
+                    <input type="password" id="currentPassword" name="currentPassword" placeholder="Current password" required>
+                    <button type="button" class="password-toggle"><i class="fas fa-eye"></i></button>
+                </div>
+                <input type="text" id="newUsername" name="newUsername" placeholder="New username" required>
+                <div class="password-field">
+                    <input type="password" id="newPassword" name="newPassword" placeholder="New password" required>
+                    <button type="button" class="password-toggle"><i class="fas fa-eye"></i></button>
+                </div>
+                <div class="password-field">
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm new password" required>
+                    <button type="button" class="password-toggle"><i class="fas fa-eye"></i></button>
+                </div>
+                <div class="modal-actions" style="margin-top: 15px;">
+                    <button class="btn" id="cancelCredentials" type="button" style="background: #eee; color: #333;">Cancel</button>
+                    <button class="btn btn-primary" type="submit">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Clear All Confirmation Modal -->
+    <div class="modal" id="clearAllModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-exclamation-triangle text-danger"></i> Delete All Messages</h3>
+            <p>Are you sure you want to delete ALL messages? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button class="btn" id="cancelClearAll" style="background: #eee; color: #333;">Cancel</button>
+                <button class="btn btn-danger" id="confirmClearAll">Delete All</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set current date in header
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        let allMessages = [];
+        let filteredMessages = [];
+        let deleteTargetId = null;
+
+        // Load messages
+        async function loadMessages() {
+            try {
+                const response = await fetch('/api/messages');
+                const data = await response.json();
+                if (data.success) {
+                    allMessages = data.messages.sort((a, b) => {
+                        // Sort by unread first, then by date desc
+                        if (a.read === b.read) {
+                            return b.id - a.id;
+                        }
+                        return a.read ? 1 : -1;
+                    });
+                    filterMessages(); // Will call renderTable
+                    updateStats();
+                }
+            } catch (error) {
+                console.error('Error loading messages:', error);
+                if (window.showToast) window.showToast('Failed to load messages', 'error');
+            }
+        }
+
+        // Search filtering logic
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            filterMessages(e.target.value.toLowerCase());
+        });
+
+        function filterMessages(query = '') {
+            if (!query) {
+                filteredMessages = [...allMessages];
+            } else {
+                filteredMessages = allMessages.filter(msg => 
+                    (msg.name && msg.name.toLowerCase().includes(query)) ||
+                    (msg.email && msg.email.toLowerCase().includes(query)) ||
+                    (msg.subject && msg.subject.toLowerCase().includes(query)) ||
+                    (msg.message && msg.message.toLowerCase().includes(query))
+                );
+            }
+            renderTable();
+        }
+
+        // Render Data Table
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            
+            if (filteredMessages.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            <div style="font-size: 3rem; color: #eee; margin-bottom: 15px;"><i class="fas fa-folder-open"></i></div>
+                            <p>No messages found</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = '';
+            
+            filteredMessages.forEach(msg => {
+                const tr = document.createElement('tr');
+                tr.className = msg.read ? '' : 'unread';
+                tr.innerHTML = `
+                    <td>
+                        <span class="badge ${msg.read ? 'badge-success' : 'badge-danger'}">
+                            ${msg.read ? 'Read' : 'New'}
+                        </span>
+                    </td>
+                    <td><span style="font-size: 0.85rem; color: #555;">${formatDate(msg.timestamp)}</span></td>
+                    <td>
+                        <div style="font-weight: 500;">${escapeHtml(msg.name)}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">${escapeHtml(msg.email)}</div>
+                    </td>
+                    <td>
+                        <div style="font-weight: 500;">${escapeHtml(msg.subject || 'No Subject')}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            ${escapeHtml(msg.message)}
+                        </div>
+                    </td>
+                    <td style="text-align: center; white-space: nowrap;">
+                        ${!msg.read ? `<button class="action-btn text-info" onclick="markAsRead(${msg.id})" title="Mark as Read"><i class="fas fa-check-circle"></i></button>` : ''}
+                        <button class="action-btn text-primary" onclick="toggleReplyRow(${msg.id})" title="View & Reply"><i class="fas fa-reply"></i></button>
+                        ${msg.phone ? `<button class="action-btn text-whatsapp" onclick="openWhatsApp('${msg.phone}', '${escapeHtml(msg.name)}')" title="WhatsApp"><i class="fab fa-whatsapp"></i></button>` : ''}
+                        <button class="action-btn text-danger" onclick="confirmDelete(${msg.id})" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                `;
+                
+                // Expandable Reply Row
+                const replyTr = document.createElement('tr');
+                replyTr.className = 'reply-row';
+                replyTr.id = `replyRow-${msg.id}`;
+                replyTr.innerHTML = `
+                    <td colspan="5">
+                        <div class="reply-content">
+                            <h4 style="margin-bottom: 10px; color: var(--dark); border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                                Message from ${escapeHtml(msg.name)}
+                            </h4>
+                            <p style="white-space: pre-wrap; font-size: 0.95rem; color: #555; margin-bottom: 20px;">${escapeHtml(msg.message)}</p>
+                            
+                            <h5 style="color: var(--primary);"><i class="fas fa-pen"></i> Draft Reply</h5>
+                            <textarea class="reply-textarea" id="replyText-${msg.id}">Dear ${escapeHtml(msg.name)},\n\nThank you for contacting Mutam al Bukhari.\n\n</textarea>
+                            
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn btn-primary" style="background: #EA4335;" onclick="sendGmailReply(${msg.id}, '${escapeHtml(msg.email)}', '${escapeHtml(msg.subject || 'Your message')}')">
+                                    <i class="fas fa-envelope"></i> Send via Gmail
+                                </button>
+                                <button class="btn" style="background: #333; color: #fff;" onclick="copyReply(${msg.id})">
+                                    <i class="fas fa-copy"></i> Copy to Clipboard
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                `;
+                
+                tbody.appendChild(tr);
+                tbody.appendChild(replyTr);
+            });
+        }
+
+        function toggleReplyRow(id) {
+            const row = document.getElementById(`replyRow-${id}`);
+            if (row.classList.contains('active')) {
+                row.classList.remove('active');
+            } else {
+                // Close others
+                document.querySelectorAll('.reply-row.active').forEach(r => r.classList.remove('active'));
+                row.classList.add('active');
+                if (window.showToast) window.showToast('Message opened for reply', 'info');
+            }
+        }
+
+        // Rest of the logic (Stats, Delete, Copy, Auth)
+        function updateStats() {
+            document.getElementById('totalMessages').textContent = allMessages.length;
+            document.getElementById('unreadMessages').textContent = allMessages.filter(m => !m.read).length;
+
+            const today = new Date().toDateString();
+            const todayCount = allMessages.filter(m => new Date(m.timestamp).toDateString() === today).length;
+            document.getElementById('todayMessages').textContent = todayCount;
+        }
+
+        async function markAsRead(id) {
+            try {
+                await fetch(`/api/messages/${id}/read`, { method: 'PUT' });
+                if (window.showToast) window.showToast('Message marked as read', 'success');
+                loadMessages();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function markAllAsRead() {
+            if (allMessages.filter(m => !m.read).length === 0) return;
+            try {
+                const unread = allMessages.filter(m => !m.read);
+                await Promise.all(unread.map(m => fetch(`/api/messages/${m.id}/read`, { method: 'PUT' })));
+                if (window.showToast) window.showToast('All messages marked as read', 'success');
+                loadMessages();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        function confirmDelete(id) {
+            deleteTargetId = id;
+            document.getElementById('deleteModal').classList.add('active');
+        }
+
+        async function deleteMessage() {
+            try {
+                await fetch(`/api/messages/${deleteTargetId}`, { method: 'DELETE' });
+                document.getElementById('deleteModal').classList.remove('active');
+                if (window.showToast) window.showToast('Message deleted', 'success');
+                loadMessages();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function clearAllMessages() {
+            if (allMessages.length === 0) {
+                document.getElementById('clearAllModal').classList.remove('active');
+                return;
+            }
+            try {
+                await Promise.all(allMessages.map(m => fetch(`/api/messages/${m.id}`, { method: 'DELETE' })));
+                document.getElementById('clearAllModal').classList.remove('active');
+                if (window.showToast) window.showToast('All messages cleared', 'success');
+                loadMessages();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        function sendGmailReply(id, email, subject) {
+            const replyText = document.getElementById(`replyText-${id}`).value;
+            const encodedBody = encodeURIComponent(replyText);
+            const encodedSubject = encodeURIComponent('Re: ' + subject);
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodedSubject}&body=${encodedBody}`;
+            window.open(gmailUrl, '_blank');
+            markAsRead(id);
+        }
+
+        function copyReply(id) {
+            const replyText = document.getElementById(`replyText-${id}`).value;
+            navigator.clipboard.writeText(replyText).then(() => {
+                if (window.showToast) window.showToast('Reply copied to clipboard!', 'success', 'Copied');
+            });
+        }
+
+        function openWhatsApp(phone, name) {
+            let cleanPhone = phone.replace(/[^0-9+]/g, '');
+            if (cleanPhone.startsWith('0')) cleanPhone = '92' + cleanPhone.substring(1);
+            if (!cleanPhone.startsWith('+')) cleanPhone = '+' + cleanPhone;
+            cleanPhone = cleanPhone.replace('+', '');
+            const message = encodeURIComponent(`Hello ${name},\n\nThank you for contacting Mutam al Bukhari.`);
+            window.open(`https://wa.me/${cleanPhone}?text=${message}`, '_blank');
+        }
+
+        function formatDate(isoString) {
+            const date = new Date(isoString);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Auth & Modals
+        async function updateCredentials(event) {
+            event.preventDefault();
+            const payload = {
+                currentPassword: document.getElementById('currentPassword').value,
+                newUsername: document.getElementById('newUsername').value,
+                newPassword: document.getElementById('newPassword').value,
+                confirmPassword: document.getElementById('confirmPassword').value
+            };
+            try {
+                const response = await fetch('/api/admin/credentials', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await response.json();
+                if (data.success) {
+                    if (window.showToast) window.showToast(data.message, 'success');
+                    document.getElementById('credentialsForm').reset();
+                    document.getElementById('credentialsModal').classList.remove('active');
+                } else {
+                    if (window.showToast) window.showToast(data.error || 'Update failed', 'error');
+                }
+            } catch (error) {
+                if (window.showToast) window.showToast('Network Error', 'error');
+            }
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            try {
+                const res = await fetch('/api/admin/logout', { method: 'POST' });
+                if (res.ok) window.location.href = '/';
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+        // Event Listeners
+        document.getElementById('refreshBtn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const overlay = document.getElementById('loadingOverlay');
+            
+            // Show full screen blurred overlay
+            overlay.classList.add('active');
+            
+            await loadMessages();
+            
+            // Keep it visible for 1 second for a good visual effect
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                if (window.showToast) window.showToast('Data Synced Successfully', 'success', 'Refreshed');
+            }, 1000); 
+        });
+
+        document.getElementById('changeCredentialsBtn').addEventListener('click', () => {
+            document.getElementById('credentialsModal').classList.add('active');
+        });
+        document.getElementById('markAllReadBtn').addEventListener('click', markAllAsRead);
+        document.getElementById('clearAllBtn').addEventListener('click', () => {
+            document.getElementById('clearAllModal').classList.add('active');
+        });
+        document.getElementById('cancelCredentials').addEventListener('click', () => {
+            document.getElementById('credentialsModal').classList.remove('active');
+            document.getElementById('credentialsForm').reset();
+        });
+        document.getElementById('credentialsForm').addEventListener('submit', updateCredentials);
+        document.getElementById('cancelDelete').addEventListener('click', () => {
+            document.getElementById('deleteModal').classList.remove('active');
+        });
+        document.getElementById('confirmDelete').addEventListener('click', deleteMessage);
+        document.getElementById('cancelClearAll').addEventListener('click', () => {
+            document.getElementById('clearAllModal').classList.remove('active');
+        });
+        document.getElementById('confirmClearAll').addEventListener('click', clearAllMessages);
+
+        // Password toggles
+        document.querySelectorAll('.password-toggle').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const input = btn.previousElementSibling;
+                const icon = btn.querySelector('i');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.replace('fa-eye', 'fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.replace('fa-eye-slash', 'fa-eye');
+                }
+            });
+        });
+        // Mobile Menu Toggle
+        const adminMenuBtn = document.getElementById('adminMenuBtn');
+        const sidebar = document.querySelector('.sidebar');
+        
+        adminMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sidebar.classList.toggle('active');
+            adminMenuBtn.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.querySelector('.main-content').addEventListener('click', () => {
+            if(sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                adminMenuBtn.classList.remove('active');
+            }
+        });
+
+        // Initial load
+        loadMessages();
+        setInterval(loadMessages, 30000);
+    </script>
+    <script src="js/toast.js"></script>
+</body>
+</html>

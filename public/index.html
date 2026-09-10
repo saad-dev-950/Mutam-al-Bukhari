@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutam al Bukhari - Fine Dining Restaurant</title>
+    <link rel="icon" href="images/Tab Icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/toast.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-utensils"></i>
+                Mutam al Bukhari
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle animate-fade-down">Welcome to</span>
+            <h1 class="animate-fade-up">Mutam al Bukhari</h1>
+            <p class="animate-fade-up delay-1">Experience the finest flavors of authentic cuisine</p>
+            <div class="hero-buttons animate-fade-up delay-2">
+                <a href="#contact" class="btn-primary">Reserve a Table</a>
+                <a href="#about" class="btn-outline">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Story</span>
+                <h2>About Us</h2>
+                <div class="section-divider"><span></span></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text reveal-left">
+                    <p class="about-lead">Welcome to <strong>Mutam al Bukhari</strong>, where we serve authentic and
+                        delicious food in a warm, inviting atmosphere.</p>
+                    <p>Our restaurant is committed to providing you with the finest dining experience, using only the
+                        freshest ingredients and traditional recipes. Whether you're looking for a place to enjoy a meal
+                        with family, celebrate a special occasion, or simply satisfy your cravings, we're here to serve
+                        you with passion and dedication.</p>
+                </div>
+                <div class="about-features reveal-right">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3>Fresh Ingredients</h3>
+                        <p>We use only the freshest, highest quality ingredients</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                        <h3>Expert Chefs</h3>
+                        <p>Our chefs bring years of experience to every dish</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Great Location</h3>
+                        <p>Conveniently located on West Canal Road</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Hours Integrated Here -->
+            <div class="hours-inline reveal-up">
+                <div class="hours-card">
+                    <div class="hours-header">
+                        <i class="fas fa-clock"></i>
+                        <h3>Opening Hours</h3>
+                    </div>
+                    <div class="hours-grid">
+                        <div class="hour-item">
+                            <span class="day">Monday</span>
+                            <span class="time">12 PM - 1 AM</span>
+                        </div>
+                        <div class="hour-item">
+                            <span class="day">Tuesday</span>
+                            <span class="time">12 PM - 1 AM</span>
+                        </div>
+                        <div class="hour-item">
+                            <span class="day">Wednesday</span>
+                            <span class="time">12 PM - 1 AM</span>
+                        </div>
+                        <div class="hour-item">
+                            <span class="day">Thursday</span>
+                            <span class="time">12 PM - 1 AM</span>
+                        </div>
+                        <div class="hour-item">
+                            <span class="day">Friday</span>
+                            <span class="time">12 PM - 1 AM</span>
+                        </div>
+                        <div class="hour-item">
+                            <span class="day">Saturday</span>
+                            <span class="time">12 PM - 1 AM</span>
+                        </div>
+                        <div class="hour-item">
+                            <span class="day">Sunday</span>
+                            <span class="time">12 PM - 1 AM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="color: var(--primary);">Testimonials</span>
+                <h2 style="color: var(--white);">What Our Guests Say</h2>
+                <div class="section-divider"><span></span></div>
+            </div>
+
+            <div class="swiper reviews-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Review 1 -->
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">"Very good food, delicious, all food fresh made. Rates are very
+                                reasonable and value for money."</p>
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">M</div>
+                                <div class="reviewer-details">
+                                    <h4>Mian M Asad Ali</h4>
+                                    <span>Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">"Amazing Taste & Ambiance. Everything Is Provided In Affordable
+                                Price. Moreover, Management Is Also Very Good & Humble."</p>
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">S</div>
+                                <div class="reviewer-details">
+                                    <h4>Saboor Mohammed Khan</h4>
+                                    <span>Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">"Today, I had the chance to savor Lehmul Mandi. It was a delightful
+                                experience, and I enjoyed every aspect of it to the fullest. I highly recommend trying
+                                it."</p>
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">S</div>
+                                <div class="reviewer-details">
+                                    <h4>Shahid Ibrahim</h4>
+                                    <span>Customer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">"Best mutton Mandi in FAISALABAD. Rice with nuts and their red sauce
+                                is superb. Overall quality of mutton Mandi is unmatched."</p>
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">D</div>
+                                <div class="reviewer-details">
+                                    <h4>Daniyal Ali Iqbal</h4>
+                                    <span>Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">"The Food was great, I had no expectations for any taste. But It was
+                                so great that I was impressed. We ordered Mutton Karahi and Kebab."</p>
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">U</div>
+                                <div class="reviewer-details">
+                                    <h4>Muhammad Usman Khan</h4>
+                                    <span>Customer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 6 -->
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">"What an amazing food! Though it’s not an upscale restaurant, but
+                                they really got the taste real close! Quantity is great! Absolutely recommended!"</p>
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">T</div>
+                                <div class="reviewer-details">
+                                    <h4>Timmi</h4>
+                                    <span>Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location">
+        <div class="container">
+            <div class="section-header light">
+                <span class="section-tag">Find Us</span>
+                <h2 style="color: #1a1a1a;">Our Location</h2>
+                <div class="section-divider"><span></span></div>
+            </div>
+            <div class="location-content">
+                <div class="location-info reveal-left">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-details">
+                            <h3>Address</h3>
+                            <p>West Canal Road, near Royalton Hotel, opposite Rafhan Mill Road, Abdullahpur, Faisalabad,
+                                Pakistan</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-details">
+                            <h3>Phone</h3>
+                            <p><a href="tel:+923048881948">0304 8881948</a></p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-details">
+                            <h3>Working Hours</h3>
+                            <p>Open Daily: 12 PM - 1 AM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-wrapper reveal-right">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.463683972936!2d73.1112292!3d31.4238549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3922697f2a3b63ed%3A0x61e39c4f951e21f6!2sMutam%20al%20Bukhari!5e0!3m2!1sen!2spk!4v1234567890"
+                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get in Touch</span>
+                <h2>Contact Us</h2>
+                <div class="section-divider"><span></span></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info reveal-left">
+                    <h3>Have a question or want to make a reservation?</h3>
+                    <p>Send us a message and we'll get back to you as soon as possible!</p>
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>0304 8881948</p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Visit Us</h4>
+                                <p>West Canal Road, Faisalabad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper reveal-right">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="Enter your email">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" name="subject">
+                                    <option value="">Select a subject</option>
+                                    <option value="reservation">Reservation</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="catering">Catering Service</option>
+                                    <option value="complaint">Complaint</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" rows="5" required
+                                placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <span class="btn-text">Send Message <i class="fas fa-paper-plane"></i></span>
+                            <span class="btn-loading"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+                        </button>
+                        <div id="formMessage" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+                    fill="#1a1a1a" />
+            </svg>
+        </div>
+        <div class="footer-content">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h3><i class="fas fa-utensils"></i> Mutam al Bukhari</h3>
+                        <p>Experience the finest flavors of authentic cuisine in a warm, inviting atmosphere.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#reviews">Reviews</a></li>
+                            <li><a href="#location">Location</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contact Info</h4>
+                        <ul class="contact-list">
+                            <li><i class="fas fa-phone"></i> 0304 8881948</li>
+                            <li><i class="fas fa-map-marker-alt"></i> West Canal Road, Faisalabad</li>
+                            <li><i class="fas fa-clock"></i> Open: 12 PM - 1 AM Daily</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Mutam al Bukhari. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/923048881948?text=Assalam%20o%20Alaikum%20Mutam%20al%20Bukhari!%20Mujhey%20table%20reservation%20ya%20menu%20ke%20baaray%20mein%20maloomat%20chahiyen."
+        class="whatsapp-float" target="_blank">
+        <span class="wa-tooltip">Chat with us!</span>
+        <span class="wa-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="#ffffff"
+                    d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+            </svg>
+        </span>
+    </a>
+
+    <!-- Admin Login Modal -->
+    <div class="admin-modal-overlay" id="adminLoginModal">
+        <div class="admin-modal-content">
+            <button class="admin-modal-close" id="closeAdminLogin">&times;</button>
+            <div class="admin-modal-header">
+                <i class="fas fa-shield-alt"></i>
+                <h2>Admin Login</h2>
+                <p>Enter your credentials to access the dashboard</p>
+            </div>
+            <form id="adminLoginForm" class="admin-modal-form">
+                <div class="form-group">
+                    <label for="adminUsername"><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="adminUsername" required placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword"><i class="fas fa-lock"></i> Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="adminPassword" required placeholder="Enter password">
+                        <button type="button" id="adminPasswordToggle" class="password-toggle-btn"
+                            aria-label="Toggle password visibility">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit admin-btn">
+                    <span class="btn-text">Login to Dashboard <i class="fas fa-sign-in-alt"></i></span>
+                    <span class="btn-loading" style="display: none;"><i class="fas fa-spinner fa-spin"></i>
+                        Authenticating...</span>
+                </button>
+                <div id="adminLoginMessage" class="form-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="js/toast.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.reviews-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>
