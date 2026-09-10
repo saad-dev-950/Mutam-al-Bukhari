@@ -10,7 +10,7 @@ Welcome to **Mutam al Bukhari**, a premium, modern, and fully functional **Full-
 
 * **Developer Name:** Saad Nadeem
 * **Platform / Brand:** **Saad Dev Hub** 🚀
-* **Role:** Full-Stack Web Developer
+* **Role:** Full-Stack Developer | MERN Stack
 * **Mission:** Building clean, modern, high-performance, and user-centric web applications.
 
 ---
