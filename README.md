@@ -1,5 +1,7 @@
 # 🍲 Mutam al Bukhari Restaurant - Full-Stack Web Application
 
+🌐 **Live Preview:** [https://mutam-al-bukhari.netlify.app/](https://mutam-al-bukhari.netlify.app/)
+
 Welcome to **Mutam al Bukhari**, a premium, modern, and fully functional **Full-Stack Web Application** designed for an authentic Arabian fine-dining restaurant. The application features an interactive customer-facing frontend powered by a robust Express.js backend.
 
 ---
